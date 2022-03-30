@@ -1,0 +1,126 @@
+.loginPage {
+    width: 100vw;
+    height: 100vh;
+
+    background: linear-gradient(72.44deg, #000000, rgba(0, 0, 0, 0,) 100%), #29CDB5;
+    mix-blend-mode: normal;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .loginContainer {
+        background: #f6f6f6;
+        border-radius: 10px;
+
+        width: 60rem;
+        height: 42rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+
+        .sideLeft {
+            width: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 25rem;
+                filter: drop-shadow(1px 6px 4px rgba(0, 0, 0, 0.6));
+            }
+        }
+
+        .sideRight {
+            width: 50%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            h3 {
+                font-family: Roboto, sans-serif;
+                color: #373331;
+
+                font-size: 2.5rem;
+                font-weight: bold;
+
+                margin-bottom: 1.5rem;
+
+                filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.3));
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                label {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+    
+                    width: 320px;
+                    height: 40px;
+                    background: #DFDFDF;
+                    border-radius: 10px;
+    
+                    margin-bottom: 1rem;
+    
+                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                    
+                    input {
+                        align-items: center;
+    
+                        height: 90%;
+                        width: 85%;
+    
+                        background: transparent;
+                        border: 0;
+    
+                        font-family: Roboto, sans-serif;
+                        font-weight: 300;
+                    }
+    
+                    input:focus {
+                        box-shadow: 0 0 0 0;
+                        border: none;
+                        outline: 0;
+                    }
+    
+                    input:-webkit-autofill,
+                    input:-webkit-autofill:hover,
+                    input:-webkit-autofill:focus,
+                    input:-webkit-autofill:active {
+                        transition: background-color 5000s ease-in-out 0s;
+                    }
+                }
+    
+                button {
+                    height: 2.1rem;
+                    width: 9rem;
+                    border-radius: 15px;
+                    border: 0;
+    
+                    color: white;
+                    background: #04d361;
+    
+                    filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.45)); 
+    
+                    transition: filter 0.2s;
+                    transition: box-shadow 0.2s;
+    
+                    &:hover {
+                        filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1));
+                        box-shadow: inset 0px 6px 6px rgba(0, 0, 0, 0.25);
+                    }
+                }
+            }
+        }
+    }
+}
