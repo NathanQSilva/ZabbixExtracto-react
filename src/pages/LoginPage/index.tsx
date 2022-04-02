@@ -6,6 +6,7 @@ import { FiUser, FiServer, FiLock } from 'react-icons/fi'
 
 // Importações externas
 import { useState } from 'react'
+import ParticlesBack from 'components/ParticlesBack'
 
 export default function LoginPage() {
     const [user, setUser] = useState("")
@@ -15,13 +16,15 @@ export default function LoginPage() {
     return(
         <div className={styles.loginPage}>
             <div className={styles.logoContainer}>
-                <img src={logo} alt="Logo zabbix extractor" />
+                <ParticlesBack />
+                <img className={styles.logo} src={logo} alt="Logo zabbix extractor" />
             </div>
             <div className={styles.loginContainer}>
-                <h3 className={styles.title}>Conecte na API</h3> 
                     <form action="">
+                        <h3 className={styles.title}>Conecte na API</h3> 
+
                         <label htmlFor="User">
-                        <FiUser size={30} color="#F2F2F2" className={styles.icon} />
+                        <FiUser size={30} color="#38A576" className={styles.icon} />
                         <input
                             type="text"
                             name="User"
@@ -34,7 +37,7 @@ export default function LoginPage() {
                         </label>
 
                         <label htmlFor="Password">
-                            <FiLock size={30} color="#F2F2F2" />
+                            <FiLock size={30} color="#38A576" className={styles.icon} />
                             <input
                                 type="password"
                                 name="Password"
@@ -47,7 +50,7 @@ export default function LoginPage() {
                         </label>
 
                         <label htmlFor="Server">
-                            <FiServer size={30} color="#F2F2F2" />
+                            <FiServer size={30} color="#38A576" className={styles.icon} />
                             <input
                                 type="text"
                                 name="Server"
