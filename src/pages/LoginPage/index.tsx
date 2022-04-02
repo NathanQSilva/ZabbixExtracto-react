@@ -1,14 +1,20 @@
 // Importações visuais
 import styles from './LoginPage.module.scss'
-// Imagens
 import logo from '../../assets/logo.png'
-import { FiUser, FiServer, FiLock } from 'react-icons/fi'
+import { ReactComponent as UserIcon } from '../../assets/icons/user.svg'
+import { ReactComponent as UnlockIcon } from '../../assets/icons/unlock.svg'
+import { ReactComponent as ServerIcon } from '../../assets/icons/server.svg'
 
 // Importações externas
 import { useState } from 'react'
-import ParticlesBack from 'components/ParticlesBack'
+import Particles from "react-tsparticles";
+import { ISourceOptions } from "tsparticles"
+
+//Importações internas
+import ParticlesOptions from "../../data/particles.json"
 
 export default function LoginPage() {
+
     const [user, setUser] = useState("")
     const [password, setPassword] = useState("")
     const [server, setServer] = useState("")
@@ -16,7 +22,7 @@ export default function LoginPage() {
     return(
         <div className={styles.loginPage}>
             <div className={styles.logoContainer}>
-                <ParticlesBack />
+                <Particles className={styles.particles} options={ParticlesOptions as ISourceOptions} />
                 <img className={styles.logo} src={logo} alt="Logo zabbix extractor" />
             </div>
             <div className={styles.loginContainer}>
@@ -24,7 +30,7 @@ export default function LoginPage() {
                         <h3 className={styles.title}>Conecte na API</h3> 
 
                         <label htmlFor="User">
-                        <FiUser size={30} color="#38A576" className={styles.icon} />
+                        <UserIcon className={styles.icon} />
                         <input
                             type="text"
                             name="User"
@@ -37,7 +43,7 @@ export default function LoginPage() {
                         </label>
 
                         <label htmlFor="Password">
-                            <FiLock size={30} color="#38A576" className={styles.icon} />
+                            <UnlockIcon className={styles.icon} />
                             <input
                                 type="password"
                                 name="Password"
@@ -50,7 +56,7 @@ export default function LoginPage() {
                         </label>
 
                         <label htmlFor="Server">
-                            <FiServer size={30} color="#38A576" className={styles.icon} />
+                            <ServerIcon className={styles.icon} />
                             <input
                                 type="text"
                                 name="Server"
@@ -62,7 +68,7 @@ export default function LoginPage() {
                             />
                         </label>
                             
-                        <button>Entrar</button>
+                        <button>ENTRAR</button>
                     </form>
                 </div>
             </div>

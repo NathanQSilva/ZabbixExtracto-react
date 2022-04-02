@@ -2,7 +2,7 @@
     width: 100vw;
     height: 100vh;
 
-    background: #131C23;
+    background: transparent;
     mix-blend-mode: normal;
 
     display: flex; 
@@ -21,6 +21,10 @@
         .logo {
             width:600px;
             height: 12rem;
+        }
+
+        .particles {
+            z-index: -1;
         }
     }
 
@@ -43,6 +47,7 @@
             align-items: center;
 
             width: 60%;
+            border-radius: 8px;
 
             background: #131C23;
 
@@ -54,18 +59,17 @@
                 margin-bottom: 1rem;
     
                 font-family: Roboto, sans-serif;
-                font-style: normal;
-                font-weight: 700;
-                line-height: 130.3%;
+                font-style: medium;
+                font-weight: 500;
 
                 margin-bottom: 40px;
             }
              
             label {
                 height: 2.7rem;
-                width: 300px;
+                width: 350px;
                 
-                border-radius: 0.5rem; 
+                border-radius: 4px; 
                 background: #091016;
 
                 margin-bottom: 15px;
@@ -100,21 +104,21 @@
             }
 
             button {
-                 font-family: Roboto, sans-serif;
-                 font-weight: 700;
-                 font-size: 20px;
-                 line-height: 15px;
-                 color: #FFFFFF;
+                font-family: Roboto, sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 15px;
+                color: #FFFFFF;
 
-                 background: #38A576;
-                 border-radius: 6px;
+                background: linear-gradient(228.32deg, #38A576 0%, #104E33 92.85%);
+                border-radius: 6px;
+                
+                border: none;
 
-                 border: none;
+                width: 350px;
+                height: 40px;
 
-                 width: 300px;
-                 height: 40px;
-
-                 margin-top: 15px;
+                margin-top: 15px;
             }
         }
     }
