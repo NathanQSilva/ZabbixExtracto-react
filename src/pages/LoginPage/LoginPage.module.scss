@@ -2,124 +2,109 @@
     width: 100vw;
     height: 100vh;
 
-    background: linear-gradient(72.44deg, #000000, rgba(0, 0, 0, 0,) 100%), #29CDB5;
+    background: #131C23;
     mix-blend-mode: normal;
 
-    display: flex;
-    justify-content: center;
+    display: flex; 
+    justify-content: space-around;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 
-    .loginContainer {
-        background: #f6f6f6;
-        border-radius: 10px;
-
-        width: 60rem;
-        height: 42rem;
+    .logoContainer {
+        height: 100%;
+        width: 60%;
 
         display: flex;
+        justify-content: center;
         align-items: center;
-        justify-content: space-around;
 
+        img {
+            width:600px;
+            height: 12rem;
+        }
+    }
 
-        .sideLeft {
-            width: 50%;
+    .loginContainer {
+        height: 100%;
+        width: 40%;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-            img {
-                width: 25rem;
-                filter: drop-shadow(1px 6px 4px rgba(0, 0, 0, 0.6));
-            }
+        flex-direction: column;
+
+        background: #F2F2F2;
+
+        h3 {
+            font-size: 2rem;
+            color: #131C23;
+            margin-bottom: 1rem;
+
+            font-family: Roboto, sans-serif;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 130.3%;
         }
 
-        .sideRight {
-            width: 50%;
-
+        form {
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
 
-            h3 {
-                font-family: Roboto, sans-serif;
-                color: #373331;
+            width: 60%;
+             
+            label {
+                height: 2.7rem;
+                width: 300px;
+                
+                border-radius: 0.5rem; 
+                background: #222D35;
 
-                font-size: 2.5rem;
-                font-weight: bold;
-
-                margin-bottom: 1.5rem;
-
-                filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.3));
-            }
-            form {
+                margin-bottom: 15px;
+                
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: space-around;
 
-                label {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-around;
-    
-                    width: 320px;
-                    height: 40px;
-                    background: #DFDFDF;
-                    border-radius: 10px;
-    
-                    margin-bottom: 1rem;
-    
-                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-                    
-                    input {
-                        align-items: center;
-    
-                        height: 90%;
-                        width: 85%;
-    
-                        background: transparent;
-                        border: 0;
-    
-                        font-family: Roboto, sans-serif;
-                        font-weight: 300;
-                    }
-    
-                    input:focus {
-                        box-shadow: 0 0 0 0;
-                        border: none;
-                        outline: 0;
-                    }
-    
-                    input:-webkit-autofill,
-                    input:-webkit-autofill:hover,
-                    input:-webkit-autofill:focus,
-                    input:-webkit-autofill:active {
-                        transition: background-color 5000s ease-in-out 0s;
-                    }
+                input {
+                    width: 250px;
+                    height: 30px;
+
+                    border: none;
+                    background: #222D35;
+
+                    color: #F2F2F2;
+
+                    font-family: Roboto, sans-serif;
+                    font-size: 1rem;
+                    font-style: normal;
+                    font-weight: 400;
+
                 }
-    
-                button {
-                    height: 2.1rem;
-                    width: 9rem;
-                    border-radius: 15px;
-                    border: 0;
-    
-                    color: white;
-                    background: #04d361;
-    
-                    filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.45)); 
-    
-                    transition: filter 0.2s;
-                    transition: box-shadow 0.2s;
-    
-                    &:hover {
-                        filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.1));
-                        box-shadow: inset 0px 6px 6px rgba(0, 0, 0, 0.25);
-                    }
+
+                input:focus {
+                    outline: none;
                 }
+            }
+
+            button {
+                 font-family: Roboto, sans-serif;
+                 font-weight: 700;
+                 font-size: 20px;
+                 line-height: 15px;
+                 color: #FFFFFF;
+
+                 background: #38A576;
+                 border-radius: 6px;
+
+                 border: none;
+
+                 width: 200px;
+                 height: 40px;
+
+                 margin-top: 15px;
             }
         }
     }

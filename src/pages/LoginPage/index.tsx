@@ -14,59 +14,54 @@ export default function LoginPage() {
 
     return(
         <div className={styles.loginPage}>
+            <div className={styles.logoContainer}>
+                <img src={logo} alt="Logo zabbix extractor" />
+            </div>
             <div className={styles.loginContainer}>
-                <div className={styles.sideLeft}>
-                    <img src={logo} alt="Logo zabbix extractor" />
-                </div>
-                <div className={styles.sideRight}>
-                    <h3 className={styles.title}>Connect API</h3>
+                <h3 className={styles.title}>Conecte na API</h3> 
                     <form action="">
-                        <div>
-                            <label htmlFor="User">
-                                <FiUser size={25} color="#373331" />
-                                <input
-                                    type="text"
-                                    name="User"
-                                    id="User"
-                                    value={user}
-                                    onChange={evento => setUser(evento.target.value)}
-                                    placeholder="User"
-                                    required
-                                />
-                            </label>
-                        </div>
-                        <div>
-                            <label htmlFor="Password">
-                                <FiLock size={25} color="#373331" />
-                                <input
-                                    type="password"
-                                    name="Password"
-                                    id="Password"
-                                    value={password}
-                                    onChange={evento => setPassword(evento.target.value)}
-                                    placeholder="Password"
-                                    required
-                                />
-                            </label>
-                        </div>
-                        <div>
-                            <label htmlFor="Server">
-                                <FiServer size={25} color="#373331" />
-                                <input
-                                    type="text"
-                                    name="Server"
-                                    id="Server"
-                                    value={server}
-                                    onChange={evento => setServer(evento.target.value)}
-                                    placeholder="Server"
-                                    required
-                                />
-                            </label>
-                        </div>
-                        <button>Logar</button>
+                        <label htmlFor="User">
+                        <FiUser size={30} color="#F2F2F2" className={styles.icon} />
+                        <input
+                            type="text"
+                            name="User"
+                            id="User"
+                            value={user}
+                            onChange={evento => setUser(evento.target.value)}
+                            placeholder="User"
+                            required
+                        />
+                        </label>
+
+                        <label htmlFor="Password">
+                            <FiLock size={30} color="#F2F2F2" />
+                            <input
+                                type="password"
+                                name="Password"
+                                id="Password"
+                                value={password}
+                                onChange={evento => setPassword(evento.target.value)}
+                                placeholder="Password"
+                                required
+                            />
+                        </label>
+
+                        <label htmlFor="Server">
+                            <FiServer size={30} color="#F2F2F2" />
+                            <input
+                                type="text"
+                                name="Server"
+                                id="Server"
+                                value={server}
+                                onChange={evento => setServer(evento.target.value)}
+                                placeholder="Server"
+                                required
+                            />
+                        </label>
+                            
+                        <button>Entrar</button>
                     </form>
                 </div>
             </div>
-        </div>
     )
 }
