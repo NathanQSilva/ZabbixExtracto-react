@@ -6,18 +6,28 @@ import { ReactComponent as UnlockIcon } from '../../assets/icons/unlock.svg'
 import { ReactComponent as ServerIcon } from '../../assets/icons/server.svg'
 
 // Importações externas
-import { useState } from 'react'
 import Particles from "react-tsparticles";
 import { ISourceOptions } from "tsparticles"
+import { useFormik } from 'formik'
 
 //Importações internas
 import ParticlesOptions from "../../data/particles.json"
+import { useAuth } from '../../contexts/AuthContext'
 
 export default function LoginPage() {
 
-    const [user, setUser] = useState("")
-    const [password, setPassword] = useState("")
-    const [server, setServer] = useState("")
+    const { loginZabbix } = useAuth()
+
+    const formData = useFormik({
+        initialValues: {
+            User: '',
+            Password: '',
+            Server: '',
+        },
+        onSubmit: values => {
+            loginZabbix(values)
+        }
+    });
 
     return(
         <div className={styles.loginPage}>
@@ -26,18 +36,18 @@ export default function LoginPage() {
                 <img className={styles.logo} src={logo} alt="Logo zabbix extractor" />
             </div>
             <div className={styles.loginContainer}>
-                    <form action="">
+                    <form onSubmit={e => e.preventDefault()}>
                         <h3 className={styles.title}>Conecte na API</h3> 
 
                         <label htmlFor="User">
                         <UserIcon className={styles.icon} />
                         <input
-                            type="text"
-                            name="User"
                             id="User"
-                            value={user}
-                            onChange={evento => setUser(evento.target.value)}
-                            placeholder="User"
+                            name="User"
+                            type="text"
+                            placeholder="User"                          
+                            onChange={formData.handleChange}
+                            value={formData.values.User}
                             required
                         />
                         </label>
@@ -45,12 +55,12 @@ export default function LoginPage() {
                         <label htmlFor="Password">
                             <UnlockIcon className={styles.icon} />
                             <input
-                                type="password"
-                                name="Password"
                                 id="Password"
-                                value={password}
-                                onChange={evento => setPassword(evento.target.value)}
+                                name="Password"
+                                type="password"
                                 placeholder="Password"
+                                onChange={formData.handleChange}
+                                value={formData.values.Password}                                
                                 required
                             />
                         </label>
@@ -58,17 +68,21 @@ export default function LoginPage() {
                         <label htmlFor="Server">
                             <ServerIcon className={styles.icon} />
                             <input
-                                type="text"
-                                name="Server"
                                 id="Server"
-                                value={server}
-                                onChange={evento => setServer(evento.target.value)}
+                                name="Server"
+                                type="text"
                                 placeholder="Server"
+                                onChange={formData.handleChange}
+                                value={formData.values.Server}
                                 required
                             />
                         </label>
                             
-                        <button>ENTRAR</button>
+                        <button
+                            type='submit'
+                        >
+                            ENTRAR
+                        </button>
                     </form>
                 </div>
             </div>

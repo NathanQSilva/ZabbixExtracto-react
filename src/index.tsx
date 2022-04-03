@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './routes';
 import './index.css';
-import { AuthProvider } from 'contexts/AuthContext';
+import { AuthContextProvider } from 'contexts/AuthContext';
 
 ReactDOM.render(
     <React.StrictMode>
-        <AuthProvider>
+        <AuthContextProvider>
             <Router />
-        </AuthProvider>
+        </AuthContextProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );
