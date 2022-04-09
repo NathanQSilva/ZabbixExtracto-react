@@ -36,7 +36,7 @@ export default function LoginPage() {
                 <img className={styles.logo} src={logo} alt="Logo zabbix extractor" />
             </div>
             <div className={styles.loginContainer}>
-                    <form onSubmit={e => e.preventDefault()}>
+                    <form onSubmit={formData.handleSubmit}>
                         <h3 className={styles.title}>Conecte na API</h3> 
 
                         <label htmlFor="User">

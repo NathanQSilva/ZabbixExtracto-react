@@ -1,28 +1,43 @@
 import axios from "axios";
-import { createContext, ReactNode, useContext } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 
 interface AuthProviderProps {
     children: ReactNode;
 }
 
-interface formData {
-    User?: string;
-    Password?: string;
-    server?: string;
+interface loginData {
+    User: string;
+    Password: string;
+    Server: string;
 }
 
 interface AuthContextData {
-    loginZabbix: (formData: formData) => void
+    isError: boolean;
+    loginZabbix: (formValues: loginData) => void
 }
 
 export const AuthContext = createContext({} as AuthContextData);
 
 export function AuthContextProvider ({ children }: AuthProviderProps) {
 
-    function loginZabbix(formData: formData) {
+    const [isError, setIsError] = useState(false)
+
+    function urlValidation(serverString: string) {
+        var r = /^(?:[a-z]+:)?\/\//i;
+
+        if (r.test(serverString)) {
+            return serverString+"/api_jsonrpc.php"
+        }
+        else {
+            return "https://"+serverString+"/api_jsonrpc.php"
+        }
+    }
+
+    function loginZabbix(formValues: loginData) {
+
         axios({
-            url: formData.server,
+            url: urlValidation(formValues.Server),
             method: "POST",
             headers: {
                 'Content-type': 'application/json'
@@ -31,8 +46,8 @@ export function AuthContextProvider ({ children }: AuthProviderProps) {
                 jsonrpc: "2.0",
                 method: "user.login",
                 params: {
-                user: formData.User,
-                password: formData.Password,
+                user: formValues.User,
+                password: formValues.Password,
                 },
                 id: 1,
                 auth: null,
@@ -40,19 +55,24 @@ export function AuthContextProvider ({ children }: AuthProviderProps) {
         })
         .then((response) => {
             if (response.data.error) {
-                console.log("ERRO")
+                setIsError(true)
             }
             else {
-                console.log(response.data.result)
+                sessionStorage.setItem("zabbixKey", response.data.result)
+                sessionStorage.setItem("zabbixServer", formValues.Server)
+                setIsError(false)
             }
         })
-        .catch((error) => {console.log(error)})
+        .catch(() => {
+            setIsError(true)
+        })
     }
 
     return (
         <AuthContext.Provider
             value={{
-                loginZabbix
+                loginZabbix,
+                isError
             }}
         >
             { children }
