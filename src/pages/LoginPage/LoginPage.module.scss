@@ -104,21 +104,56 @@
             }
 
             button {
-                font-family: 'Roboto', sans-serif;
-                font-weight: 500;
-                font-size: 20px;
-                line-height: 15px;
-                color: #FFFFFF;
-
-                background: linear-gradient(228.32deg, #38A576 0%, #104E33 92.85%);
-                border-radius: 6px;
-                
                 border: none;
-
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                text-decoration: none;
+                background: linear-gradient(228.32deg, #38A576 0%, #104E33 92.85%);
+                color: #fff;
+                text-transform: capitalize;
+                font: {
+                  family: 'Roboto', sans-serif;
+                  size: 18px;
+                  font-weight: 400;
+                }
+                padding: 20px 0px;
                 width: 350px;
-                height: 40px;
+                height: 2.7rem;
+                border-radius: 6px;
+                overflow: hidden;
+            }
 
-                margin-top: 15px;
+            button.effect {
+                transition: all 0.2s linear 0s;
+
+                &:before {
+                    font-family: 'Roboto', sans-serif;
+                    content: ">";
+                    font-size: 25px;
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    right: 0;
+                    top: 0;
+                    opacity: 0;
+                    height: 100%;
+                    width: 40px;
+                    transition: all 0.2s linear 0s;
+                }
+                  
+                &:hover {
+                    text-indent: -20px;
+                    
+                    &:before {
+                        opacity: 1;
+                        text-indent: 0px;
+                    }
+                  
+                }
             }
         }
     }

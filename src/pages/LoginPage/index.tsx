@@ -9,6 +9,7 @@ import { ReactComponent as ServerIcon } from '../../assets/icons/server.svg'
 import Particles from "react-tsparticles";
 import { ISourceOptions } from "tsparticles"
 import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
 
 //Importações internas
 import ParticlesOptions from "../../data/particles.json"
@@ -17,6 +18,7 @@ import { useAuth } from '../../contexts/AuthContext'
 export default function LoginPage() {
 
     const { loginZabbix } = useAuth()
+    const navigate = useNavigate()
 
     const formData = useFormik({
         initialValues: {
@@ -26,6 +28,7 @@ export default function LoginPage() {
         },
         onSubmit: values => {
             loginZabbix(values)
+            navigate("/home")
         }
     });
 
@@ -80,6 +83,7 @@ export default function LoginPage() {
                             
                         <button
                             type='submit'
+                            className={styles.effect}
                         >
                             ENTRAR
                         </button>
