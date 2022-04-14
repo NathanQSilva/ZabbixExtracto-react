@@ -59,7 +59,7 @@ export function AuthContextProvider ({ children }: AuthProviderProps) {
             }
             else {
                 sessionStorage.setItem("zabbixKey", response.data.result)
-                sessionStorage.setItem("zabbixServer", formValues.Server)
+                sessionStorage.setItem("zabbixServer", urlValidation(formValues.Server))
                 setIsError(false)
             }
         })
