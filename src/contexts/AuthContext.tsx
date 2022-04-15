@@ -14,6 +14,7 @@ interface loginData {
 
 interface AuthContextData {
     isError: boolean;
+    serverVersion: string;
     loginZabbix: (formValues: loginData) => void
 }
 
@@ -22,6 +23,7 @@ export const AuthContext = createContext({} as AuthContextData);
 export function AuthContextProvider ({ children }: AuthProviderProps) {
 
     const [isError, setIsError] = useState(false)
+    const [serverVersion, setServerVersion] = useState("")
 
     function urlValidation(serverString: string) {
         var r = /^(?:[a-z]+:)?\/\//i;
@@ -32,6 +34,26 @@ export function AuthContextProvider ({ children }: AuthProviderProps) {
         else {
             return "https://"+serverString+"/api_jsonrpc.php"
         }
+    }
+
+    function getZabbixVersion() {
+        axios({
+            url: String(sessionStorage.getItem("zabbixServer")),
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            data: JSON.stringify({
+                "jsonrpc": "2.0",
+                "method": "apiinfo.version",
+                "params": [],
+                "id": 1
+            })
+        })
+        .then((response) => {
+            setServerVersion(response.data.result)
+            sessionStorage.setItem("zabbixVersion", String(response.data.result))
+        })
     }
 
     function loginZabbix(formValues: loginData) {
@@ -60,6 +82,7 @@ export function AuthContextProvider ({ children }: AuthProviderProps) {
             else {
                 sessionStorage.setItem("zabbixKey", response.data.result)
                 sessionStorage.setItem("zabbixServer", urlValidation(formValues.Server))
+                getZabbixVersion()
                 setIsError(false)
             }
         })
@@ -72,7 +95,8 @@ export function AuthContextProvider ({ children }: AuthProviderProps) {
         <AuthContext.Provider
             value={{
                 loginZabbix,
-                isError
+                isError,
+                serverVersion
             }}
         >
             { children }

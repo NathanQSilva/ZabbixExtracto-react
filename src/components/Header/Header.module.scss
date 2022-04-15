@@ -22,10 +22,12 @@
             }
         }
 
-        .server {
+        .serverContainer {
             display: flex;
             align-items: center;
             justify-content: center;
+
+            color: #f2f2f2;
         }
     }
 
